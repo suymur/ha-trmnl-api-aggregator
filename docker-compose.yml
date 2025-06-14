@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  eink-middleware:
+    build: .
+    ports:
+      - "8234:8234"
+    env_file:
+      - .env
+    environment:
+      - BASE_URL= # Optional: Base URL path if deployed behind a reverse proxy (e.g., /my-app)
+      - EINK_API_PATH=/eink-data # The API endpoint path for the e-ink device
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    restart: unless-stopped

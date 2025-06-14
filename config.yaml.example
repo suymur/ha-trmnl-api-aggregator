@@ -1,0 +1,30 @@
+# This file specifies the Home Assistant entities to fetch.
+# Copy this file to config.yaml and customize it based on your Home Assistant setup
+# and the data you want to display on your e-ink device.
+
+home_assistant_sensors:
+  - entity_id: sensor.living_room_temperature
+    fields:
+      - state
+      - attributes.unit_of_measurement
+      - attributes.friendly_name
+  - entity_id: sensor.living_room_humidity
+    fields:
+      - state
+      - attributes.unit_of_measurement
+  - entity_id: weather.home
+    fields:
+      - state
+      - attributes.temperature
+  - entity_id: sensor.energy_usage
+    fields:
+      - state
+      - attributes.unit_of_measurement
+  # Add more entities as needed, e.g.:
+  # - entity_id: binary_sensor.front_door
+  #   fields:
+  #     - state
+  # - entity_id: light.kitchen_lights
+  #   fields:
+  #     - state
+  #     - attributes.brightness

@@ -1,0 +1,76 @@
+<div class="layout">
+  <div class="list" data-list-limit="true" data-list-max-height="200" data-list-hidden-count="true" data-list-max-columns="1">
+    <span class="label">Home Assistant Dashboard</span>
+    
+    <!-- Living Room Temperature -->
+    {% if data.living_room_temperature %}
+      <div class="item">
+        <div class="meta">
+          <span class="index">🌡️</span>
+        </div>
+        <div class="content">
+          <span class="title title--small">{{ data.living_room_temperature_friendly_name | default: "Living Room Temperature" }}</span>
+          <span class="subtitle">{{ data.living_room_temperature }}{% if data.living_room_temperature_unit_of_measurement %}{{ data.living_room_temperature_unit_of_measurement }}{% endif %}</span>
+        </div>
+      </div>
+    {% endif %}
+    
+    <!-- Living Room Humidity -->
+    {% if data.living_room_humidity %}
+      <div class="item">
+        <div class="meta">
+          <span class="index">💧</span>
+        </div>
+        <div class="content">
+          <span class="title title--small">Humidity</span>
+          <span class="subtitle">{{ data.living_room_humidity }}{% if data.living_room_humidity_unit_of_measurement %}{{ data.living_room_humidity_unit_of_measurement }}{% endif %}</span>
+        </div>
+      </div>
+    {% endif %}
+    
+    <!-- Weather -->
+    {% if data.weather_home %}
+      <div class="item">
+        <div class="meta">
+          <span class="index">🌤️</span>
+        </div>
+        <div class="content">
+          <span class="title title--small">Weather</span>
+          <span class="subtitle">{{ data.weather_home | capitalize }}{% if data.weather_home_temperature %}, {{ data.weather_home_temperature }}°{% endif %}</span>
+        </div>
+      </div>
+    {% endif %}
+    
+    <!-- Energy Usage -->
+    {% if data.energy_usage %}
+      <div class="item">
+        <div class="meta">
+          <span class="index">⚡</span>
+        </div>
+        <div class="content">
+          <span class="title title--small">Energy Usage</span>
+          <span class="subtitle">{{ data.energy_usage }}{% if data.energy_usage_unit_of_measurement %} {{ data.energy_usage_unit_of_measurement }}{% endif %}</span>
+        </div>
+      </div>
+    {% endif %}
+    
+    <!-- Last Updated -->
+    {% if data.last_updated %}
+      <div class="item">
+        <div class="meta">
+          <span class="index">🕐</span>
+        </div>
+        <div class="content">
+          <span class="title title--small">Last Updated</span>
+          <span class="subtitle">{{ data.last_updated }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="title_bar">
+  <img class="image" src="https://usetrmnl.com/images/plugins/trmnl--render.svg">
+  <span class="title">{{ trmnl.plugin_settings.instance_name | default: "Home Assistant" }}</span>
+  <span class="instance">Smart Home Dashboard</span>
+</div>
